@@ -1,0 +1,197 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-sky-ice: #A0D2EB;
+  --color-lavender-light: #E5EAF5;
+  --color-pastel-purple: #D0BDF4;
+  --color-brand-purple: #8458B3;
+  --color-dark-slate: #494D5F;
+}
+
+@layer base {
+  :root {
+    --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --sky-ice: #A0D2EB;
+    --lavender-light: #E5EAF5;
+    --pastel-purple: #D0BDF4;
+    --brand-purple: #8458B3;
+    --dark-slate: #494D5F;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: #E5EAF5;
+    color: #494D5F;
+    @apply antialiased selection:bg-[#8458B3] selection:text-white min-h-screen;
+  }
+}
+
+/* Custom Palette Utilities */
+.bg-palette-lavender { background-color: #E5EAF5; }
+.bg-palette-sky { background-color: #A0D2EB; }
+.bg-palette-pastel { background-color: #D0BDF4; }
+.bg-palette-purple { background-color: #8458B3; }
+.bg-palette-dark { background-color: #494D5F; }
+
+.text-palette-dark { color: #494D5F; }
+.text-palette-purple { color: #8458B3; }
+.text-palette-pastel { color: #D0BDF4; }
+.text-palette-sky { color: #A0D2EB; }
+
+.border-palette-pastel { border-color: #D0BDF4; }
+.border-palette-purple { border-color: #8458B3; }
+.border-palette-dark { border-color: #494D5F; }
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #E5EAF5;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #D0BDF4;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #8458B3;
+}
+
+/* 3D Depth & Lighting Effects matching Minimal Color Palette */
+.hero-3d-bg {
+    background: 
+        radial-gradient(circle at 20% 20%, rgba(160, 210, 235, 0.4) 0%, transparent 40%),
+        radial-gradient(circle at 80% 80%, rgba(132, 88, 179, 0.6) 0%, transparent 50%),
+        linear-gradient(135deg, #494D5F 0%, #8458B3 50%, #494D5F 100%);
+    box-shadow: inset 0 20px 40px rgba(73, 77, 95, 0.25), inset 0 -20px 40px rgba(73, 77, 95, 0.35);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Subtle 3D grid overlay pattern */
+.hero-3d-bg::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(to right, rgba(208, 189, 244, 0.1) 1px, transparent 1px),
+                      linear-gradient(to bottom, rgba(208, 189, 244, 0.1) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+}
+
+/* Floating 3D card lift effect */
+.card-3d {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card-3d:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px -6px rgba(132, 88, 179, 0.2);
+}
+
+/* Live spotlight follower */
+#spotlight {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(160, 210, 235, 0.35) 0%, rgba(132, 88, 179, 0.15) 40%, transparent 70%);
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    transition: width 0.2s, height 0.2s;
+    mix-blend-mode: screen;
+}
+
+/* Neural Mesh & Interactive Gradient Glow */
+.gemini-hero {
+    background: #494D5F;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Ambient Aurora Orbs */
+.aurora-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(90px);
+    pointer-events: none;
+    opacity: 0.55;
+    transition: transform 0.3s ease-out;
+}
+.orb-1 {
+    width: 450px;
+    height: 450px;
+    background: rgba(132, 88, 179, 0.6);
+    top: -10%;
+    left: 10%;
+    animation: floatOrb 12s infinite alternate ease-in-out;
+}
+.orb-2 {
+    width: 500px;
+    height: 500px;
+    background: rgba(208, 189, 244, 0.5);
+    bottom: -20%;
+    right: 10%;
+    animation: floatOrb2 15s infinite alternate ease-in-out;
+}
+.orb-3 {
+    width: 350px;
+    height: 350px;
+    background: rgba(160, 210, 235, 0.5);
+    top: 20%;
+    right: 25%;
+    animation: floatOrb3 10s infinite alternate ease-in-out;
+}
+
+@keyframes floatOrb {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(60px, 40px) scale(1.1); }
+}
+@keyframes floatOrb2 {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(-50px, -60px) scale(1.15); }
+}
+@keyframes floatOrb3 {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(40px, -40px) scale(0.9); }
+}
+
+/* Glassmorphism Cards with Palette Styling */
+.glass-card {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(16px);
+    border: 1px solid #D0BDF4;
+    box-shadow: 0 10px 30px -5px rgba(132, 88, 179, 0.08);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+}
+.glass-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px -10px rgba(132, 88, 179, 0.2);
+}
+
+/* Shimmer text effect */
+.shimmer-text {
+    background: linear-gradient(90deg, #ffffff 0%, #A0D2EB 50%, #ffffff 100%);
+    background-size: 200% auto;
+    color: transparent;
+    -webkit-background-clip: text;
+    animation: shimmer 6s linear infinite;
+}
+@keyframes shimmer {
+    to { background-position: 200% center; }
+}
+
+/* 3D Book Flipping Styles */
+.book-container {
+    perspective: 1500px;
+}
+.book-page {
+    transition: transform 0.6s cubic-bezier(0.645, 0.045, 0.355, 1);
+    transform-origin: left;
+    backface-visibility: hidden;
+}
+
